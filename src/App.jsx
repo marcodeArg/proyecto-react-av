@@ -1,10 +1,11 @@
 import Character from './components/Character'
-import './App.css'
+import NavBar from './components/NavBar'
 
 function App() {
 
   return (
     <>
+      <NavBar />
       <Character />
     </>
   )
