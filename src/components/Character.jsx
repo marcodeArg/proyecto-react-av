@@ -5,7 +5,7 @@ function Character() {
   const [counter, setCounter] = useState(1)
 
   const abortController = new AbortController()
-  const signal = abortController.signal()
+  const signal = abortController.signal
 
   useEffect(() => {
     setTimeout(fetch(`https://rickandmortyapi.com/api/character/${counter}`, { signal })
@@ -13,7 +13,7 @@ function Character() {
       .then(data => setData(data))
       .catch(err => console.error(err)), 2000)
 
-    return abortController.abort()
+    return () => abortController.abort()
   }, [counter])
 
   const handleCounter = () => {
@@ -28,9 +28,6 @@ function Character() {
     </section>
 
   )
-
-
-
 }
 
 export default Character
